@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Request\" />
-    <Folder Include="Service\Interface\" />
-    <Folder Include="Service\Implementation\" />
   </ItemGroup>
 
   <ItemGroup>

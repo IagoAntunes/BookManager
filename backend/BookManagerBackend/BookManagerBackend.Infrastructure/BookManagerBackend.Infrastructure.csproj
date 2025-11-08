@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookManagerBackend.Application\BookManagerBackend.Application.csproj" />
     <ProjectReference Include="..\BookManagerBackend.Core\BookManagerBackend.Core.csproj" />
+    <ProjectReference Include="..\BookManagerBackend.Domain\BookManagerBackend.Domain.csproj" />
   </ItemGroup>
 
 </Project>

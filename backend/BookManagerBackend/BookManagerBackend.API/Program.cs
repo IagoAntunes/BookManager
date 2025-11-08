@@ -9,6 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddApiServices(builder.Configuration);
 builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureServices(builder.Configuration);
