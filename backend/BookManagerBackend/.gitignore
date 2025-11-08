@@ -1,0 +1,18 @@
+## Ignore Visual Studio workspace and build artifacts
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.cache
+*.log
+*.vsidx
+# Ignore NuGet packages folder (if any)
+**/packages/
+
+# Rider/IDE files
+*.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
