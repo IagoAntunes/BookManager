@@ -17,7 +17,7 @@ namespace BookManagerBackend.Application
             });
 
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
-
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
 

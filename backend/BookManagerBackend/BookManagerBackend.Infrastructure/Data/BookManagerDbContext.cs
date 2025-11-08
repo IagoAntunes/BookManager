@@ -1,6 +1,7 @@
 ﻿using BookManagerBackend.Application.Service.Interface;
 using BookManagerBackend.Core.Entities;
 using BookManagerBackend.Domain.Entities;
+using BookManagerBackend.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -8,12 +9,13 @@ using System.Linq.Expressions;
 
 namespace BookManagerBackend.Infrastructure.Data
 {
-    public class BookManagerDbContext : DbContext
+    public class BookManagerDbContext : DbContext, IUnitOfWork
     {
         private readonly IAuthenticatedUserService _authUserService;
 
         public DbSet<BookEntity> Books { get; set; }
         public DbSet<StatusEntity> Statuses { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
         public BookManagerDbContext(
                     DbContextOptions<BookManagerDbContext> options,

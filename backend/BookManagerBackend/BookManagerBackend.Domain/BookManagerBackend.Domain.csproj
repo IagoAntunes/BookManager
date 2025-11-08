@@ -10,7 +10,6 @@
     <Folder Include="Dtos\" />
     <Folder Include="Errors\" />
     <Folder Include="Result\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>

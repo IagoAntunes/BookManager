@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.10" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookManagerBackend.Core\BookManagerBackend.Core.csproj" />
+    <ProjectReference Include="..\BookManagerBackend.Domain\BookManagerBackend.Domain.csproj" />
   </ItemGroup>
 
 </Project>
