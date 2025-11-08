@@ -1,4 +1,5 @@
 using BookManagerBackend.API;
+using BookManagerBackend.API.Handlers;
 using BookManagerBackend.Application;
 using BookManagerBackend.Application.Validators;
 using BookManagerBackend.Infrastructure;
@@ -60,6 +61,9 @@ builder.Services.AddSwaggerGen(options =>
     options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 builder.Services.AddHttpContextAccessor();
 
 // ===== DEPENDÊNCIAS DO PROJETO =====
@@ -69,6 +73,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 
 // ===== APP PIPELINE =====
 var app = builder.Build();
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
