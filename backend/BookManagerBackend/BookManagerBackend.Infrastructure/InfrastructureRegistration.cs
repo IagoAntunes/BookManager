@@ -33,6 +33,7 @@ namespace BookManagerBackend.Infrastructure
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IUnitOfWork>(sp =>
                 sp.GetRequiredService<BookManagerDbContext>());
             services.AddSingleton<IPasswordHasher<UserEntity>,
