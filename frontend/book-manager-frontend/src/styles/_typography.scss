@@ -1,0 +1,50 @@
+$font-family-inter: 'Inter', sans-serif;
+
+@mixin text-heading-xl {
+    font-family: $font-family-inter;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px; 
+}
+
+@mixin text-heading-lg {
+    font-family: $font-family-inter;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px; 
+}
+
+@mixin text-heading-md {
+    font-family: $font-family-inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px; 
+}
+
+@mixin text-body-md {
+    font-family: $font-family-inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px; 
+}
+
+@mixin text-body-sm {
+    font-family: $font-family-inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+@mixin text-action {
+    font-family: $font-family-inter;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px; 
+}
+
+@mixin text-badge {
+    font-family: $font-family-inter;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px; 
+}

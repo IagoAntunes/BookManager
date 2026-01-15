@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/typography';
+@import './styles/spacing';
+@import './styles/variables';
+
+body {
+    font-family: $font-family-inter;
+    -webkit-font-smoothing: antialiased;
+}
+
+.text-heading-xl { @include text-heading-xl; }
+.text-heading-lg { @include text-heading-lg; }
+.text-heading-md { @include text-heading-md; }
+.text-body-md    { @include text-body-md; }
+.text-body-sm    { @include text-body-sm; }
+.text-action     { @include text-action; }
+.text-badge      { @include text-badge; }
