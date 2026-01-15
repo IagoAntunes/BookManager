@@ -1,0 +1,12 @@
+<button [ngClass]="'btn-' + theme()" [disabled]="disabled()" class="base-button" (click)="handleClick()">
+
+    @if (icon()) {
+    <span class="button-icon" [style.mask-image]="'url(/icons/ic_' + icon() + '.svg)'"
+        [style.-webkit-mask-image]="'url(/icons/ic_' + icon() + '.svg)'">
+    </span>
+    }
+
+    <span>
+        <ng-content></ng-content>
+    </span>
+</button>

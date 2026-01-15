@@ -1,3 +1,4 @@
+// 1. Variáveis de Base
 $font-family-inter: 'Inter', sans-serif;
 
 @mixin text-heading-xl {
@@ -38,13 +39,13 @@ $font-family-inter: 'Inter', sans-serif;
 @mixin text-action {
     font-family: $font-family-inter;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 20px; 
 }
 
 @mixin text-badge {
     font-family: $font-family-inter;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 16px; 
 }

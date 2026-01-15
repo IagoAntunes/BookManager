@@ -1,0 +1,78 @@
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+@import '../../../styles/spacing';
+
+.base-button {
+    @include text-action;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .button-icon {
+        width: 20px;
+        height: 20px;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        background-color: currentColor; 
+    }
+
+}
+
+.btn-primary {
+    background-color: $color-navy-low;
+    color: white;
+
+    &:hover:not(:disabled) {
+        background-color: $color-navy-dark;
+    }
+
+    .button-icon {
+        background-color: white; 
+    }
+
+}
+
+.btn-secondary {
+    background-color: $color-white;
+    border: 1px solid $color-gray-200;
+    color: $color-gray-500;
+
+    .button-icon {
+        background-color: $color-gray-500;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: $color-gray-100;
+    }
+}
+
+.btn-danger {
+    background-color: white; 
+    color: $color-red-bright;
+    border: 1px solid $color-gray-200;
+
+    .button-icon {
+        background-color: $color-red-bright;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: $color-gray-100;
+    }
+
+}
