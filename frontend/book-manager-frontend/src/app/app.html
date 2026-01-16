@@ -11,3 +11,19 @@
 <app-c-button theme="primary" icon="plus">Label</app-c-button>
 <app-c-button theme="secondary" icon="trash">Label</app-c-button>
 <app-c-button theme="danger" icon="trash" (clicked)="teste()">Label</app-c-button>
+
+<app-c-field label="Nome da Aposta" placeholder="Ex: Final da Champions">
+</app-c-field>
+
+<app-c-field label="Descrição" placeholder="Explique os detalhes..." [rows]="4">
+</app-c-field>
+
+
+<app-c-rating label="teste" [cleanable]="true"></app-c-rating>
+
+<app-c-badge theme="default"></app-c-badge>
+<app-c-badge theme="inProgress"></app-c-badge>
+<app-c-badge theme="done"></app-c-badge>
+
+
+<app-c-card (onEdit)="teste()" (onDelete)="teste()" di></app-c-card>

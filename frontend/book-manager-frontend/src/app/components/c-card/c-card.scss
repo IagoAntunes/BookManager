@@ -1,0 +1,72 @@
+@import '../../../styles/variables';
+@import '../../../styles/spacing';
+@import '../../../styles/typography';
+
+
+.card-container {
+    display: flex;
+    width: fit-content;
+    max-width: 240px;
+    height: fit-content;
+    flex-direction: column;
+
+    padding: 12px;
+    border: 2px solid $color-gray-200;
+    border-radius: 8px;
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-gray-100;
+        border-radius: 8px;
+
+        img {
+            width: 100%; 
+            height: 260px;
+            object-fit: cover; 
+            border-radius: 4px;
+        }
+
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xxs;
+        margin-top: $spacing-sm;
+        margin-bottom: $spacing-sm;
+
+        .text-title {
+            @include text-heading-md;
+            color: $color-gray-500;
+        }
+
+        .text-author {
+            @include text-body-md;
+            color: $color-gray-400;
+        }
+
+        .badge {
+            margin-top: $spacing-xs;
+        }
+
+        .rating {
+            margin-top: $spacing-xs;
+        }
+
+        .text-review {
+            @include text-body-sm;
+            color: $color-gray-400;
+            margin-top: $spacing-xs;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: $spacing-xs;
+        margin-top: $spacing-sm;
+    }
+
+}

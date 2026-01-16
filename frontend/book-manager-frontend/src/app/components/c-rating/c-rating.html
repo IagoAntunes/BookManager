@@ -1,0 +1,25 @@
+<div class="rating-container">
+    @if (label()) {
+    <label class="field-label">{{ label() }}</label>
+    }
+
+    <div class="stars-row">
+        @for (item of starsArray; track $index) {
+        @if ($index < rating()) { <span class="star filled" [style.mask-image]="'url(/icons/ic_star_fill' + '.svg)'"
+            [style.-webkit-mask-image]="'url(/icons/ic_star_fill' + '.svg)'" (click)="onSelectStar($index)">
+            </span>
+            }@else {
+            <span class="star outlined" [style.mask-image]="'url(/icons/ic_star_outlined' + '.svg)'"
+                [style.-webkit-mask-image]="'url(/icons/ic_star_outlined' + '.svg)'" (click)="onSelectStar($index)">
+            </span>
+            }
+
+
+            }
+            @if (cleanable() && rating() > 0) {
+                <span class="text-clear" (click)="onClearRating()">Limpar</span>
+            }
+        
+    </div>
+
+</div>

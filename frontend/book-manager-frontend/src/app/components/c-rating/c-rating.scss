@@ -1,0 +1,54 @@
+@import '../../../styles/spacing';
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+
+
+.rating-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+
+    .field-label {
+        @include text-body-sm;
+        color: $color-gray-500;
+        font-weight: 600;
+    }
+
+
+    .stars-row {
+        gap: $spacing-xs;
+        display: flex;
+        align-items: center;
+
+        .star {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            mask-size: contain;
+            mask-position: center;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            -webkit-mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            cursor: pointer;
+
+            &.filled {
+                background-color: $color-yellow-bright;
+            }
+
+            &.outlined {
+                background-color: $color-gray-300;
+            }
+
+        }
+        
+        .text-clear{
+            @include text-action;
+            color: $color-gray-400;
+            cursor: pointer;
+        }
+
+    }
+    
+}

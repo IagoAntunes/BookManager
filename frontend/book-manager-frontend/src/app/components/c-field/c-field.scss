@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+@import '../../../styles/typography';
+@import '../../../styles/spacing';
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    width: 100%;
+    max-width: 460px;
+
+    .field-label {
+        @include text-body-sm;
+        color: $color-gray-500;
+        font-weight: 600;
+    }
+
+    .field-control {
+        @include text-body-sm;
+        width: 100%;
+        padding: $spacing-xs $spacing-sm;
+        border: none;
+        border-radius: $spacing-xs;
+        background-color: $color-gray-100;
+        color: $color-gray-500;
+        transition: border-color 0.2s;
+        outline: none;
+        resize: none;
+
+        &::placeholder {
+            color: $color-gray-400;
+        }
+
+        border: 1px solid transparent;
+
+        &:focus {
+            background-color: white; 
+            border-color: $color-gray-300;
+            box-shadow: 0 0 0 2px rgba($color-gray-200, 0.5);
+        }
+
+    }
+}

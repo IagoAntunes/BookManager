@@ -1,0 +1,19 @@
+<div class="card-container">
+    <div class="img-container">
+        <img src="https://placehold.co/600x400/png" alt="Card Image">
+    </div>
+
+    <div class="card-body">
+        <span class="text-title">Title</span>
+        <span class="text-author">Author</span>
+        <app-c-badge class="badge"/>
+        <app-c-rating class="rating" [readonly]="true"></app-c-rating>
+        <span class="text-review">Comment</span>
+    </div>
+
+    <div class="actions">
+        <app-c-button theme="secondary" icon="pen" (clicked)="onAction('edit')">Editar</app-c-button>
+        <app-c-button theme="danger" icon="trash" (clicked)="onAction('delete')">Excluir</app-c-button>
+    </div>
+
+</div>

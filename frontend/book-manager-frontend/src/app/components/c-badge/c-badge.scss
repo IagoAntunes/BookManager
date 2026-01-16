@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+@import '../../../styles/spacing';
+@import '../../../styles/typography';
+
+.badge-container{
+    padding: $spacing-xxs $spacing-xs;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @include text-badge;
+    font-weight: 700;
+
+    &.default{
+        background-color: $color-blue-light;
+        color: $color-blue-base;
+    }
+    &.inProgress{
+        background-color: $color-yellow-light;
+        color: $color-yellow-base;
+    }
+    &.done{
+        background-color: $color-green-light;
+        color: $color-green-base;
+    }
+
+}

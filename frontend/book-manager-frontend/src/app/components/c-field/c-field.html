@@ -1,0 +1,13 @@
+<div class="field-container">
+    @if (label()) {
+        <label class="field-label">{{ label() }}</label>
+    }
+
+    <div class="input-wrapper">
+        @if (rows() > 1) {
+            <textarea [placeholder]="placeholder()" [rows]="rows()" class="field-control"></textarea>
+        } @else {
+            <input type="text" [placeholder]="placeholder()" class="field-control" />
+        }
+    </div>
+</div>
