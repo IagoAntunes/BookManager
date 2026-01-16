@@ -20,6 +20,11 @@
         cursor: not-allowed;
     }
 
+    &.full-width {
+        display: flex;
+        width: 100%;
+    }
+
     .button-icon {
         width: 20px;
         height: 20px;
@@ -75,4 +80,15 @@
         background-color: $color-gray-100;
     }
 
+}
+
+.base-button:disabled {
+    cursor: not-allowed;
+    background-color: $color-gray-200;
+    color: $color-gray-400;
+    border: 1px solid transparent; 
+   
+    .button-icon {
+        background-color: $color-gray-400;
+    }
 }

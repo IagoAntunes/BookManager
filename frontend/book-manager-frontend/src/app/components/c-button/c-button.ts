@@ -13,6 +13,7 @@ export type ButtonTheme = 'primary' | 'secondary' | 'danger';
 export class CButton {
   theme = input<ButtonTheme>('primary');
   disabled = input<boolean>(false);
+  fullWidth = input<boolean>(false);
   icon = input<string | undefined>();
 
   clicked = output<void>();

@@ -1,0 +1,27 @@
+<div class="login-background">
+
+
+    <div class="login-container">
+        <div class="logo">
+            <img src="icons/ic_open_book.svg" alt="">
+            <span>Minha Biblioteca</span>
+        </div>
+        <div class="login-card">
+            <span class="text-title">{{ authType() === 'login' ? 'Acesse a plataforma' : 'Crie sua conta' }}</span>
+            <span class="text-subtitle">{{ authType() === 'login' ? 'Informe seu e-mail e senha de acesso' : 'Informe seu nome, e-mail e senha de acesso' }}</span>
+
+            <form class="login-form" [formGroup]="loginForm">
+                <app-c-field placeholder="exemplo@mail.com" label="E-mail" formControlName="email" />
+                <app-c-field placeholder="Digite sua senha" label="Senha" formControlName="password" />
+            </form>
+            <app-c-button [fullWidth]="true" (clicked)="handleAuthClick()" [disabled]="!loginForm.valid">{{ authType() === 'login' ? 'Entrar' : 'Registrar' }}</app-c-button>
+        </div>
+        <div class="change-auth-type">
+            <span class="text-title">{{ authType() === 'login' ? 'Ainda não tem uma conta?' : 'Já possui uma conta?' }}</span>
+            <span class="text-subtitle">{{ authType() === 'login' ? 'Crie uma agora mesmo' : 'Entre agora mesmo' }}</span>
+            <app-c-button theme="secondary" [fullWidth]="true" (clicked)="switchAuthType()">{{ authType() === 'login' ? 'Criar conta' : 'Acessar conta' }}</app-c-button>
+        </div>
+
+    </div>
+
+</div>
