@@ -6,6 +6,7 @@ import { Auth } from '../../services/auth';
 import { LoginRequest } from '../../core/models/auth/login-request.dto';
 import { RegisterRequest } from '../../core/models/auth/register-request.dto';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 export type AuthType = 'login' | 'register';
 
@@ -20,6 +21,7 @@ export class Login {
   private fb = inject(NonNullableFormBuilder);
   private _authService = inject(Auth);
   private _router = inject(Router);
+  private _toastr = inject(ToastrService);
 
   isLoading = signal(false);
 
@@ -52,6 +54,7 @@ export class Login {
       this._authService.login(request).subscribe({
         next: (response) => {
           console.log("SUCESSO");
+          this._toastr.success('Login realizado com sucesso!', 'Bem-vindo!');
           this._authService.saveToken(response.token);
           this._router.navigate(['/home']);
         },
@@ -77,7 +80,8 @@ export class Login {
       }
       this._authService.register(request).subscribe({
         next: (response) => {
-          console.log("REGISTRO COM SUCESSO");
+          this._toastr.success('Registro realizado com sucesso!', 'Sucesso');
+          this._authService.saveToken(response.token);
           this.switchAuthType();
           this.loginForm.reset();
         },

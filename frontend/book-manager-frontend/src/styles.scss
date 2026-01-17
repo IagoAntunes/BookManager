@@ -2,15 +2,38 @@
 @import './styles/spacing';
 @import './styles/variables';
 
+@import 'ngx-toastr/toastr';
+@import 'animate.css/animate.min.css';
+
 body {
     font-family: $font-family-inter;
     -webkit-font-smoothing: antialiased;
 }
 
-.text-heading-xl { @include text-heading-xl; }
-.text-heading-lg { @include text-heading-lg; }
-.text-heading-md { @include text-heading-md; }
-.text-body-md    { @include text-body-md; }
-.text-body-sm    { @include text-body-sm; }
-.text-action     { @include text-action; }
-.text-badge      { @include text-badge; }
+.text-heading-xl {
+    @include text-heading-xl;
+}
+
+.text-heading-lg {
+    @include text-heading-lg;
+}
+
+.text-heading-md {
+    @include text-heading-md;
+}
+
+.text-body-md {
+    @include text-body-md;
+}
+
+.text-body-sm {
+    @include text-body-sm;
+}
+
+.text-action {
+    @include text-action;
+}
+
+.text-badge {
+    @include text-badge;
+}
