@@ -2,6 +2,10 @@ import { Component, computed, inject, Signal, signal } from '@angular/core';
 import { CField } from "../../components/c-field/c-field";
 import { CButton } from "../../components/c-button/c-button";
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Auth } from '../../services/auth';
+import { LoginRequest } from '../../core/models/auth/login-request.dto';
+import { RegisterRequest } from '../../core/models/auth/register-request.dto';
+import { Router } from '@angular/router';
 
 export type AuthType = 'login' | 'register';
 
@@ -14,6 +18,10 @@ export type AuthType = 'login' | 'register';
 })
 export class Login {
   private fb = inject(NonNullableFormBuilder);
+  private _authService = inject(Auth);
+  private _router = inject(Router);
+
+  isLoading = signal(false);
 
   authType = signal<AuthType>('login');
 
@@ -36,7 +44,24 @@ export class Login {
 
   private _login() {
     if (this.loginForm.valid) {
-      console.log('Dados prontos para o Node.js:', this.loginForm.value);
+      this.isLoading.set(true);
+      const request: LoginRequest = {
+        email: this.loginForm.value.email!!,
+        password: this.loginForm.value.password!!
+      }
+      this._authService.login(request).subscribe({
+        next: (response) => {
+          console.log("SUCESSO");
+          this._authService.saveToken(response.token);
+          this._router.navigate(['/home']);
+        },
+        error: (error) => {
+          console.log("ERRO")
+        },
+        complete: () => {
+          this.isLoading.set(false);
+        }
+      });
     } else {
       console.log('Formulário inválido. Verifique os campos.');
       this.loginForm.markAllAsTouched();
@@ -45,7 +70,25 @@ export class Login {
 
   private _register() {
     if (this.loginForm.valid) {
-      console.log('Dados prontos para o Node.js:', this.loginForm.value);
+      this.isLoading.set(true);
+      const request: RegisterRequest = {
+        email: this.loginForm.value.email!!,
+        password: this.loginForm.value.password!!
+      }
+      this._authService.register(request).subscribe({
+        next: (response) => {
+          console.log("REGISTRO COM SUCESSO");
+          this.switchAuthType();
+          this.loginForm.reset();
+        },
+        error: (error) => {
+          console.log("ERRO NO REGISTRO");
+        },
+        complete: () => {
+          this.isLoading.set(false);
+        }
+
+      });
     } else {
       console.log('Formulário inválido. Verifique os campos.');
       this.loginForm.markAllAsTouched();

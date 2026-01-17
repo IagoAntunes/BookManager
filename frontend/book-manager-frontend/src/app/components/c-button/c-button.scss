@@ -2,6 +2,12 @@
 @import '../../../styles/typography';
 @import '../../../styles/spacing';
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .base-button {
     @include text-action;
     display: inline-flex;
@@ -15,6 +21,8 @@
     transition: all 0.3s ease;
     border: none;
 
+    min-height: 40px;
+
     &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -23,6 +31,16 @@
     &.full-width {
         display: flex;
         width: 100%;
+    }
+
+    .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(0, 0, 0, 0.1); 
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        display: inline-block;
     }
 
     .button-icon {
@@ -34,9 +52,13 @@
         -webkit-mask-size: contain;
         -webkit-mask-position: center;
         -webkit-mask-repeat: no-repeat;
-        background-color: currentColor; 
+        background-color: currentColor;
     }
 
+    &.is-loading {
+        cursor: wait;
+        opacity: 0.8;
+    }
 }
 
 .btn-primary {
@@ -47,10 +69,10 @@
         background-color: $color-navy-dark;
     }
 
-    .button-icon {
-        background-color: white; 
+    .spinner {
+        border-color: rgba(255, 255, 255, 0.2);
+        border-top-color: white;
     }
-
 }
 
 .btn-secondary {
@@ -58,37 +80,29 @@
     border: 1px solid $color-gray-200;
     color: $color-gray-500;
 
-    .button-icon {
-        background-color: $color-gray-500;
-    }
-
     &:hover:not(:disabled) {
         background-color: $color-gray-100;
     }
 }
 
 .btn-danger {
-    background-color: white; 
+    background-color: white;
     color: $color-red-bright;
     border: 1px solid $color-gray-200;
-
-    .button-icon {
-        background-color: $color-red-bright;
-    }
 
     &:hover:not(:disabled) {
         background-color: $color-gray-100;
     }
-
 }
 
 .base-button:disabled {
-    cursor: not-allowed;
     background-color: $color-gray-200;
     color: $color-gray-400;
-    border: 1px solid transparent; 
-   
-    .button-icon {
-        background-color: $color-gray-400;
+    border: 1px solid transparent;
+    cursor: not-allowed;
+
+    .spinner {
+        border-color: rgba(0, 0, 0, 0.05);
+        border-top-color: $color-gray-400;
     }
 }

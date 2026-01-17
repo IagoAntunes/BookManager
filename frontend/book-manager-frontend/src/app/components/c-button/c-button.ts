@@ -15,10 +15,12 @@ export class CButton {
   disabled = input<boolean>(false);
   fullWidth = input<boolean>(false);
   icon = input<string | undefined>();
+  isLoading = input<boolean>(false);
+
 
   clicked = output<void>();
   handleClick(){
-    if(!this.disabled()){
+    if(!this.disabled() && !this.isLoading()){
       this.clicked.emit();
     }
   }
