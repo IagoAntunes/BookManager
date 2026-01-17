@@ -11,6 +11,18 @@
     min-height: 100vh;
     background-color: $color-gray-100;
 
+    .login-container {
+        // Em vez de deixar o conteúdo decidir a largura, nós decidimos.
+        width: 440px; // Escolha uma largura que fique boa no seu Figma
+
+        // Isso garante que em telas menores que 440px, ele ocupe a tela toda
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; // Garante centralização se houver espaço
+    }
+
     .logo {
         display: flex;
         align-items: center;
@@ -31,8 +43,9 @@
 
     .login-card {
         width: 100%;
-        max-width: 480px; 
-        padding: $spacing-md; 
+        box-sizing: border-box;
+        max-width: 480px;
+        padding: $spacing-md;
         display: flex;
         flex-direction: column;
         padding: 28px;
@@ -63,7 +76,8 @@
 
     .change-auth-type {
         width: 100%;
-        max-width: 480px; 
+        box-sizing: border-box;
+        max-width: 480px;
 
         display: flex;
         flex-direction: column;
@@ -84,7 +98,7 @@
             color: $color-gray-400;
         }
 
-        app-c-button{
+        app-c-button {
             margin-top: $spacing-md;
         }
     }

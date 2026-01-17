@@ -35,10 +35,29 @@
         border: 1px solid transparent;
 
         &:focus {
-            background-color: white; 
+            background-color: white;
             border-color: $color-gray-300;
             box-shadow: 0 0 0 2px rgba($color-gray-200, 0.5);
         }
 
+
+
+    }
+
+    &.is-invalid {
+        .field-label {
+            color: $color-red-bright;
+        }
+
+        .field-control {
+            border: 1px solid $color-red-bright;
+            background-color: rgba($color-red-bright, 0.05);
+        }
+
+        .error-message {
+            @include text-body-sm;
+            color: $color-red-bright;
+            margin-top: 4px;
+        }
     }
 }
