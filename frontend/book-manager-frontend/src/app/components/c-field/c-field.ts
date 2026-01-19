@@ -12,6 +12,7 @@ export class CField implements ControlValueAccessor {
   label = input<string>('');
   placeholder = input<string>('');
   rows = input<number>(1);
+  icon = input<string>('');
   change = output<string>();
 
   value = signal<string>('');

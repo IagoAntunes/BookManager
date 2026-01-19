@@ -3,7 +3,16 @@
     <label class="field-label">{{ label() }}</label>
     }
 
+
+
     <div class="input-wrapper">
+
+        @if (icon()) {
+        <span class="button-icon" [style.mask-image]="'url(/icons/ic_' + icon() + '.svg)'"
+            [style.-webkit-mask-image]="'url(/icons/ic_' + icon() + '.svg)'">
+        </span>
+        }
+
         @if (rows() > 1) {
         <textarea [placeholder]="placeholder()" [rows]="rows()" (input)="handleInput($event)" (blur)="onTouched()"
             class="field-control"></textarea>
