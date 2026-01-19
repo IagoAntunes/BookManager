@@ -1,1 +1,50 @@
-<p>home works!</p>
+<div class="home-container">
+
+    <div class="header">
+        <div class="logo">
+            <img src="icons/ic_open_book.svg" alt="">
+            <span>Minha Biblioteca</span>
+        </div>
+        <app-c-button icon="plus">Adicionar livro</app-c-button>
+    </div>
+
+    @if (totalCount() > 0) {
+    <div class="dashboard">
+        <div class="dsb-card total">
+            <span class="count">{{totalCount()}}</span>
+            <span class="label">Total</span>
+        </div>
+        <div class="dsb-card wanting-to-read">
+            <span class="count">{{wantToReadCount()}}</span>
+            <span class="label">Querendo ler</span>
+        </div>
+        <div class="dsb-card reading">
+            <span class="count">{{readingCount()}}</span>
+            <span class="label">Lendo</span>
+        </div>
+        <div class="dsb-card read">
+            <span class="count">{{readCount()}}</span>
+            <span class="label">Lido</span>
+        </div>
+    </div>
+    }
+
+
+    <div class="filter-container">
+        <app-c-field class="field-filter" placeholder="Buscar por título ou autor..." (change)="onChangeFilter($event)"></app-c-field>
+        <app-c-button theme="secondary">Todos os status</app-c-button>
+    </div>
+
+    @if (totalCount() > 0) {
+        <div class="book-list">
+            @for (item of filteredBooks(); track $index) {
+            <app-c-card [book]="item" (onDelete)="deleteBook(item.id)"></app-c-card>
+            }
+
+        </div>
+    }@else {
+        <span class="empty-state">Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!</span>
+    }
+
+
+</div>

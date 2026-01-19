@@ -1,4 +1,4 @@
-import { Component, input, forwardRef, signal, Self, Optional } from '@angular/core';
+import { Component, input, forwardRef, signal, Self, Optional, output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -12,10 +12,13 @@ export class CField implements ControlValueAccessor {
   label = input<string>('');
   placeholder = input<string>('');
   rows = input<number>(1);
+  change = output<string>();
 
   value = signal<string>('');
 
-  onChange: any = () => { };
+  onChange: any = () => { 
+    this.change.emit(this.value())
+  };
   onTouched: any = () => { };
 
   constructor(@Self() @Optional() public controlDir: NgControl) {

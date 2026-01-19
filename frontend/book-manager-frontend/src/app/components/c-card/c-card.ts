@@ -1,7 +1,8 @@
 import { Component, input, output } from '@angular/core';
-import { CBadge } from "../c-badge/c-badge";
+import { BadgeTheme, CBadge } from "../c-badge/c-badge";
 import { CRating } from "../c-rating/c-rating";
 import { CButton } from "../c-button/c-button";
+import { BookModel } from '../../core/models/book/book.model';
 
 @Component({
   selector: 'app-c-card',
@@ -10,12 +11,7 @@ import { CButton } from "../c-button/c-button";
   styleUrl: './c-card.scss',
 })
 export class CCard {
-  imageUrl = input<string>();
-  title = input<string>();
-  author = input<string>();
-  status = input<string>();
-  rating = input<number>();
-  comment = input<string>();
+  book = input<BookModel>();
 
   onEdit = output<void>();
   onDelete = output<void>();
@@ -26,6 +22,24 @@ export class CCard {
     }
     else if (action === 'delete') {
       this.onDelete.emit();
+    }
+  }
+
+
+  convertStatus(status:string) : BadgeTheme{
+    switch (status) {
+      case 'Quero Ler': {
+        return 'default';
+      }
+      case 'Lendo': {
+        return 'inProgress';
+      }
+      case 'Lido': {
+        return 'done';
+      }
+      default: {
+        return 'default';
+      }
     }
   }
 

@@ -53,7 +53,7 @@ namespace BookManagerBackend.API.Controllers
         }
 
 
-        [HttpGet()]
+        [HttpGet("books")]
         public async Task<IActionResult> GetBooks()
         {
             var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

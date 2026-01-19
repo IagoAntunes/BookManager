@@ -1,14 +1,14 @@
 <div class="card-container">
     <div class="img-container">
-        <img src="https://placehold.co/600x400/png" alt="Card Image">
+        <img [src]="book()?.imageUrl" alt="Card Image">
     </div>
 
     <div class="card-body">
-        <span class="text-title">Title</span>
-        <span class="text-author">Author</span>
-        <app-c-badge class="badge"/>
-        <app-c-rating class="rating" [readonly]="true"></app-c-rating>
-        <span class="text-review">Comment</span>
+        <span class="text-title">{{book()?.title}}</span>
+        <span class="text-author">{{book()?.author}}</span>
+        <app-c-badge class="badge" [theme]="convertStatus(book()?.status?.title!!)"/>
+        <app-c-rating class="rating" [readonly]="true" [rateValue]="book()?.rating!!"></app-c-rating>
+        <span class="text-review">{{book()?.review}}</span>
     </div>
 
     <div class="actions">
