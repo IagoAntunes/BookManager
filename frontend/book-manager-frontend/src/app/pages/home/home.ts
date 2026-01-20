@@ -5,6 +5,8 @@ import { CField } from "../../components/c-field/c-field";
 import { BookModel } from '../../core/models/book/book.model';
 import { CCard } from '../../components/c-card/c-card';
 import { ToastrService } from 'ngx-toastr';
+import { CModal } from '../../components/c-modal/c-modal';
+import { CRating } from "../../components/c-rating/c-rating";
 
 enum BookStatus {
   WantToRead = 'Quero Ler',
@@ -14,7 +16,7 @@ enum BookStatus {
 
 @Component({
   selector: 'app-home',
-  imports: [CButton, CField, CCard],
+  imports: [CButton, CField, CCard, CModal, CRating],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -24,6 +26,7 @@ export class Home implements OnInit {
   private _toastr = inject(ToastrService);
 
   filterQuery = signal<string>('');
+  isAddBookModalOpen = signal(false);
 
   books = signal<BookModel[]>([]);
 
@@ -57,6 +60,14 @@ export class Home implements OnInit {
     this._getBooks();
   }
 
+  openModal() {
+    this.isAddBookModalOpen.set(true);
+  }
+
+  closeModal() {
+    this.isAddBookModalOpen.set(false);
+  }
+
   onChangeFilter(value: string) {
     this.filterQuery.set(value);
   }
@@ -71,6 +82,15 @@ export class Home implements OnInit {
         this._toastr.error('Erro ao deletar o livro.', 'Erro');
       }
     })
+  }
+
+  onSelectRating(rating: number) {
+
+
+  }
+
+  addBook(){
+    //
   }
 
   private _getBooks() {

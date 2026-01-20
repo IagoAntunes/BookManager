@@ -16,6 +16,7 @@ export class CButton {
   fullWidth = input<boolean>(false);
   icon = input<string | undefined>();
   isLoading = input<boolean>(false);
+  type = input<'button' | 'submit' | 'reset'>('button');
 
 
   clicked = output<void>();

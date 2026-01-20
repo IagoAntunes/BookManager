@@ -1,0 +1,14 @@
+<div class="modal-overlay" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <span class="modal-title">{{ title() }}</span>
+            <span class="close-icon" (click)="close()" [style.mask-image]="'url(/icons/ic_close'  + '.svg)'"
+                [style.-webkit-mask-image]="'url(/icons/ic_close' + '.svg)'">
+            </span>
+        </div>
+
+        <div class="modal-body">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
