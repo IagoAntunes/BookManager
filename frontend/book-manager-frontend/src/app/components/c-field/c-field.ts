@@ -1,5 +1,5 @@
-import { Component, input, forwardRef, signal, Self, Optional, output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, input, signal, Self, Optional, output } from '@angular/core';
+import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-c-field',

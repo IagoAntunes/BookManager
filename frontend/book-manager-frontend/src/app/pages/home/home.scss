@@ -109,18 +109,4 @@
         margin-top: $spacing-xl;
     }
 
-    .form-book{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-sm;
-        width: 100%;
-
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: $spacing-sm;
-            margin-top: $spacing-md;
-        }
-    }
-
 }

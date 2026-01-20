@@ -5,16 +5,10 @@
             <img src="icons/ic_open_book.svg" alt="">
             <span>Minha Biblioteca</span>
         </div>
-        <app-c-button icon="plus" (clicked)="openModal()">Adicionar livro</app-c-button>
+        <app-c-button icon="plus" (clicked)="openModal('add')">Adicionar livro</app-c-button>
 
 
     </div>
-
-    @if (isAddBookModalOpen()) {
-    <app-c-modal title="Novo Livro" (onClose)="closeModal()">
-        <p>O conteúdo do seu formulário virá aqui!</p>
-    </app-c-modal>
-    }
 
     @if (totalCount() > 0) {
     <div class="dashboard">
@@ -47,7 +41,7 @@
     @if (totalCount() > 0) {
     <div class="book-list">
         @for (item of filteredBooks(); track $index) {
-        <app-c-card [book]="item" (onDelete)="deleteBook(item.id)"></app-c-card>
+        <app-c-card [book]="item" (onDelete)="deleteBook(item.id)" (onEdit)="openModal('update', item)"></app-c-card>
         }
 
     </div>
@@ -55,21 +49,8 @@
     <span class="empty-state">Nenhum livro adicionado ainda. Comece adicionando seu primeiro livro!</span>
     }
 
-    @if (isAddBookModalOpen()) {
-    <app-c-modal title="Novo Livro" (onClose)="closeModal()">
-        <form class="form-book">
-            <app-c-field placeholder="Digite o título do livro" label="Título"></app-c-field>
-            <app-c-field placeholder="Digite o nome do autor" label="Autor"></app-c-field>
-            <app-c-field placeholder="URL da capa do livro (opcional)" label="URL da Imagem"></app-c-field>
-            <app-c-rating (onSelect)="onSelectRating($event)" label="Avaliação"></app-c-rating>
-            <app-c-field label="Comentário" placeholder="Suas anotações sobre o livro (opcional)"
-                [rows]="3"></app-c-field>
-            <div class="modal-actions">
-                <app-c-button theme="secondary" (clicked)="closeModal()">Cancelar</app-c-button>
-                <app-c-button (clicked)="addBook()">Adicionar</app-c-button>
-            </div>
-        </form>
-
-    </app-c-modal>
+    @if (isModalOpen()) {
+    <app-c-add-updated-book (closeModal)="closeModal()" (addUpdateBook)="addUpdateBook($event)"
+        [isUpdateMode]="modalMode() === 'update'" [bookToUpdate]="bookToUpdate()" [isLoading]="isLoadingAddUpdateBook()"></app-c-add-updated-book>
     }
 </div>

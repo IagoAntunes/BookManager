@@ -14,7 +14,7 @@
         }
 
         @if (rows() > 1) {
-        <textarea [placeholder]="placeholder()" [rows]="rows()" (input)="handleInput($event)" (blur)="onTouched()"
+        <textarea [value]="value()" [placeholder]="placeholder()" [rows]="rows()" (input)="handleInput($event)" (blur)="onTouched()"
             class="field-control"></textarea>
         } @else {
         <input type="text" [value]="value()" [placeholder]="placeholder()" (input)="handleInput($event)"

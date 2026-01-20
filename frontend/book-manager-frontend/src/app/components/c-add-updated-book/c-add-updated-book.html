@@ -1,0 +1,15 @@
+<app-c-modal [title]="isUpdateMode() ? 'Editar Livro' : 'Novo Livro'" (onClose)="onCloseModal()">
+    <form class="form-book" [formGroup]="addBookForm">
+        <app-c-field placeholder="Digite o título do livro" label="Título" formControlName="title"></app-c-field>
+        <app-c-field placeholder="Digite o nome do autor" label="Autor" formControlName="author"></app-c-field>
+        <app-c-field placeholder="URL da capa do livro (opcional)" label="URL da Imagem"
+            formControlName="imageUrl"></app-c-field>
+        <app-c-rating (onSelect)="onSelectRating($event)" label="Avaliação" formControlName="rating"></app-c-rating>
+        <app-c-field label="Comentário" placeholder="Suas anotações sobre o livro (opcional)" formControlName="review"
+            [rows]="3"></app-c-field>
+        <div class="modal-actions">
+            <app-c-button theme="secondary" (clicked)="onCloseModal()">Cancelar</app-c-button>
+            <app-c-button (clicked)="onAddUpdateBook()" [disabled]="!addBookForm.valid" [isLoading]="isLoading()">{{ isUpdateMode() ? 'Atualizar' : 'Adicionar' }}</app-c-button>
+        </div>
+    </form>
+</app-c-modal>
