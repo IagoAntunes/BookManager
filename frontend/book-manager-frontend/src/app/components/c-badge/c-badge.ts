@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 export type BadgeTheme = 'default' | 'inProgress' | 'done';
 
@@ -8,30 +8,22 @@ export type BadgeTheme = 'default' | 'inProgress' | 'done';
   templateUrl: './c-badge.html',
   styleUrl: './c-badge.scss',
 })
-export class CBadge implements OnInit{
+export class CBadge {
 
   theme = input<BadgeTheme>('default');
   inputLabel = input<string>('');
 
 
-  label:string = '';
-
-  ngOnInit(): void {
-    if(this.inputLabel() === ''){
-      switch(this.theme()){
-        case 'default': {
-          this.label = 'Quero ler';
-          break;
-        }
-        case 'inProgress': {
-          this.label = 'Lendo';
-          break;
-        }
-        case 'done': {
-          this.label = 'Lido';
-          break;
-        }
-      } 
+  label = computed(() => {
+    if(this.inputLabel() !== ''){
+      return this.inputLabel();
     }
-  }
+    
+    switch(this.theme()){
+      case 'default': return 'Quero ler';
+      case 'inProgress': return 'Lendo';
+      case 'done': return 'Lido';
+      default: return 'Quero ler';
+    } 
+  });
 }

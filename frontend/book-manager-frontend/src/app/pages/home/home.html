@@ -35,7 +35,7 @@
     <div class="filter-container">
         <app-c-field class="field-filter" placeholder="Buscar por título ou autor..." (change)="onChangeFilter($event)"
             icon="search"></app-c-field>
-        <app-c-button theme="secondary">Todos os status</app-c-button>
+        <app-c-dropdown [options]="filterDropdownOptions" [valueSelected]="selectedFilterDropdownOption()" (valueChange)="onChangeSelectedFilterDropdownOption($event)"></app-c-dropdown>
     </div>
 
     @if (totalCount() > 0) {

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AddBookRequestDto } from '../../core/models/book/add-book-request.dto';
 import { CAddUpdatedBook } from "../../components/c-add-updated-book/c-add-updated-book";
 import { finalize } from 'rxjs';
+import { CDropdown, DropdownOption } from "../../components/c-dropdown/c-dropdown";
 
 enum BookStatus {
   WantToRead = 'Quero Ler',
@@ -19,7 +20,7 @@ type ModalMode = 'add' | 'update' | null;
 
 @Component({
   selector: 'app-home',
-  imports: [CButton, CField, CCard, CAddUpdatedBook],
+  imports: [CButton, CField, CCard, CAddUpdatedBook, CDropdown],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -38,16 +39,37 @@ export class Home implements OnInit {
 
   isLoadingAddUpdateBook = signal<boolean>(false);
 
+  filterDropdownOptions : DropdownOption[] = [
+    { label: 'Todos', value: 'all' },
+    { label: 'Quero Ler', value: 'wantToRead' },
+    { label: 'Lendo', value: 'reading' },
+    { label: 'Lido', value: 'read' }
+  ];
+
+  selectedFilterDropdownOption = signal<DropdownOption>({ label: 'Todos', value: 'all' });
+
+  onChangeSelectedFilterDropdownOption(value: string) {
+    this.selectedFilterDropdownOption.set(
+      this.filterDropdownOptions.find(option => option.value === value) || { label: 'Todos', value: 'all' }
+    );
+
+  }
+
   filteredBooks = computed(() => {
     const query = this.filterQuery().toLowerCase().trim();
     const allBooks = this.books();
+    const filterDropdownOption = this.selectedFilterDropdownOption();
 
-    if (!query) return allBooks;
+    return allBooks.filter(book => {
+      const matchesQuery = !query ||
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query);
 
-    return allBooks.filter(book =>
-      book.title.toLowerCase().includes(query) ||
-      book.author.toLowerCase().includes(query)
-    );
+      const matchesStatus = filterDropdownOption.value === 'all' ||
+        book.status.title.toLowerCase() === filterDropdownOption.label.toLowerCase();
+
+      return matchesQuery && matchesStatus;
+    });
   });
 
   wantToReadCount = computed(() =>

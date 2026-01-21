@@ -4,7 +4,8 @@
         <app-c-field placeholder="Digite o nome do autor" label="Autor" formControlName="author"></app-c-field>
         <app-c-field placeholder="URL da capa do livro (opcional)" label="URL da Imagem"
             formControlName="imageUrl"></app-c-field>
-        <app-c-rating (onSelect)="onSelectRating($event)" label="Avaliação" formControlName="rating"></app-c-rating>
+        <app-c-dropdown label="Status" [options]="statusOptions" (valueChange)="onStatusChange($event)" [valueSelected]="convertStatusIdToLabel()" ></app-c-dropdown>
+        <app-c-rating label="Avaliação" formControlName="rating"></app-c-rating>
         <app-c-field label="Comentário" placeholder="Suas anotações sobre o livro (opcional)" formControlName="review"
             [rows]="3"></app-c-field>
         <div class="modal-actions">
